@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon --exec babel-node server.js",
+    "start:prod": "babel-node server.js",
     "test": "jest --forceExit",
     "test:watch": "jest --watchAll",
     "seedMovies": "knex migrate:latest && knex seed:run --specific=current_movies.js",
