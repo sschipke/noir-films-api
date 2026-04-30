@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - develop
+  workflow_dispatch:
 jobs:
   deploy:
     name: Deploy staging
@@ -10,6 +11,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: superfly/flyctl-actions/setup-flyctl@master
-      - run: flyctl deploy --config ./flyEnv/fly.staging.toml --remote-only
+      - run: flyctl deploy . --config ./flyEnv/fly.staging.toml --dockerfile ./Dockerfile --remote-only
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
